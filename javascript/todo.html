@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <input id="task-id" type="text" />
+    <input id="date-id" type="date"/>
+    <button onclick="addItem()" >Press hello</button>
+    <div id="list-id"></div>
+    <script>
+            //Models
+
+            let todos;
+
+            //Retrive array from local storage
+            let savedItems= JSON.parse(localStorage.getItem('todos-key'));
+            if(Array.isArray(savedItems)){
+              todos=savedItems;
+            }
+            else{
+              todos=[
+            {
+              taskName: 'clean house',
+              taskDate: '2022-12-27 08:00',
+              id: 'id1'
+            },
+            {
+              taskName: 'cook',
+              taskDate: '2022-12-27 09:30',
+              id: 'id2'
+            },
+            {
+              taskName: 'read bible',
+              taskDate: '2022-12-27 18:00',
+              id: 'id3'
+            },
+            {
+              taskName: 'bath',
+              taskDate: '2022-12-27 21:00',
+              id: 'id4'
+            }
+          ];
+            }
+
+          function addTask(task,date){
+            let uniq = '' + new Date().getTime();
+            todos.push(
+              {
+                taskName:task,
+                taskDate :date,
+                id: uniq
+              }
+            );
+            saveTasks();
+          }
+
+          function removeTask(DeleteId){
+            todos= todos.filter(function(task){
+                if(task.id===DeleteId){
+                  return false;
+                }
+                else{
+                  return true;
+                }
+              });
+              saveTasks();
+          }
+
+          //save todos in the local storage
+          function saveTasks(){
+            localStorage.setItem('todos-key',JSON.stringify(todos));
+          }
+
+          //Controller
+          function addItem(){
+            let task=document.getElementById('task-id').value;
+            let dateValue=document.getElementById('date-id').value;
+            addTask(task,dateValue);
+            render();
+          }
+
+          function deleteListItem(){
+            const buttonToDelete=event.target;
+            const buttonToDeleteId=buttonToDelete.id;
+            removeTask(buttonToDeleteId)
+            render();
+          }
+
+          //Views
+          render();
+          function render(){
+            document.getElementById('list-id').innerText='';
+              todos.forEach(function(todoPara){
+                let element=document.createElement('div');
+                element.innerText=todoPara.taskName + '  ' + todoPara.taskDate;
+                element.id=todoPara.id;
+
+                let button=document.createElement('button');
+                button.innerText='Delete';
+                button.setAttribute('id',todoPara.id);
+                button.style='margin-left: 12px;background-color: red;border-radius: 3px; border-width: 1px';
+                button.onclick=deleteListItem;
+                element.appendChild(button);
+                let elementList= document.getElementById('list-id');
+                elementList.appendChild(element);
+              });
+            }
+    </script>
+  </body>
+</html>

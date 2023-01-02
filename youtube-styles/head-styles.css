@@ -1,0 +1,132 @@
+.header{
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(222,222,222);
+  border-bottom-style: solid;
+  margin-bottom: 20px;
+}
+.section-1{
+display: flex;
+align-items: center;
+}
+.menu-icon{
+  height: 24px;
+  margin-right: 24px;
+  margin-left: 24px;
+}
+.youtube-icon{
+  height: 20px;
+}
+.search-icon{
+  height: 40px;
+  width: 60px;
+  border-radius: 2;
+  margin-right: 10px;
+  border-color: rgb(192, 192, 192);
+  border-style: solid;
+  border-width: 1px;
+  position: relative;
+}
+.tooltip{
+  background-color: rgb(128, 127, 127);
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: 12px;
+  border-radius: 2px;
+  position: absolute;
+  bottom: -30px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.search-icon:hover .tooltip,.voice-icon:hover .tooltip,
+.upload-icon:hover .tooltip,.apps-icon:hover .tooltip,
+.notification-container:hover .tooltip{
+  opacity: 1;
+  transition: opacity 0.25s;
+}
+
+.search-image-icon{
+  height: 25px;
+}
+.voice-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border-style: none;
+  position: relative;
+}
+.upload-icon, .apps-icon, .notification-container{
+  position: relative;
+}
+.upload-img{
+  height: 24px;
+}
+.youtube-apps{
+  height: 24px;
+}
+.notifications{
+  height: 24px;
+}
+
+.notification-count{
+  position: absolute;
+  background-color: rgb(163, 4, 4);
+  color: white;
+  top: -4px;
+  right: -4px;
+  font-family: Roboto,Arial;
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 12px;
+}
+.user{
+  height: 36px;
+  border-radius: 18px;
+}
+
+.search-pro{
+  font-size: 16px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-left: 12px;
+  height: 36px;
+  flex: 1;
+  width: 0;
+  border-radius: 2px;
+
+  border: 1px solid rgb(192, 192, 192);
+  box-shadow: inset 1px 2px 3px rgb(0,0,0,0.05);
+}
+.section-2{
+flex: 1;
+margin-left: 60px;
+max-width: 470px;
+display: flex;
+align-items: center;
+}
+.section-3{
+display: flex;
+justify-content: space-between;
+width: 180px;
+align-items: center;
+margin-right: 30px;
+margin-left: 30px;
+flex-shrink: 0;
+}
